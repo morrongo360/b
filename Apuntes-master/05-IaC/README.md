@@ -1,7 +1,5 @@
 # Infraestructura como Código: Terraform<a name="iac"></a> 	
 
-terraform
-
 La **Infraestructura como Código o Infraestructure as Code (IaC)** sirve para proveer infraestructura a través de software para conseguir despliegues consistentes, predecibles y repetibles. Esto se hace a través de código por lo que usamos un lenguaje de programación
 
  - [Instalación](#instalación)

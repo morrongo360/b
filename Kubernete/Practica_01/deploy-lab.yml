@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-lab
+  labels:
+    app: nginx-lab
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-lab
+  strategy: 
+    type: Recreate
+  template:  # descripción de los pod que despliegas
+    metadata:
+      labels:
+        app: nginx-lab
+    spec:
+      containers:
+      - name: pod-nginx-lab
+        image: nginx
+        ports:
+        - containerPort: 80

@@ -1,0 +1,30 @@
+#ss.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ss
+spec:
+  serviceName: ss
+  selector:
+    matchLabels:
+      app: ss
+  template:
+    metadata:
+      labels:
+        app: ss
+    spec:
+      volumes:
+      - name: external
+        persistentVolumeClaim:
+          claimName: mypvclaim   
+      containers:
+      - image: postgres:10.4
+        name: postgres    
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: cm-bd
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: external

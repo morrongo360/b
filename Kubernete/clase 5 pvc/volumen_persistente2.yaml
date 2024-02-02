@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: demopv2
+spec:
+# te sirve como etiqueta para cuando crees un pvc y quieras asignalo a un pv. Selector pvc
+# Si no puede que la pvc te cree otro volumen
+  storageClassName: slowdisk  
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumen_persistente002
+ 

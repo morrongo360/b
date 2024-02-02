@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pvc-ejercicio
+spec:
+  serviceName: pvc-ejercicio
+  selector:
+    matchLabels:
+      app: pvc-ejercicio
+  template:
+    metadata:
+      labels:
+        app: pvc-ejercicio
+    spec:
+      volumes:
+      - name: external
+        persistentVolumeClaim:
+          claimName: pvc-ejercicio 
+      containers:
+      - image: postgres:10.4
+        name: postgres    
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: cm-bd
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: external

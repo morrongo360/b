@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demopvc2
+spec:
+# Hace que coja el pv con la misma etiquete y asi enlaza la pvc con pv
+  storageClassName: "" 
+  resources:
+    requests:
+      storage: 2Gi
+  accessModes:
+    - ReadWriteOnce

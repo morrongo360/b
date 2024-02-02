@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: Pod
+metadata:
+  name: demo2
+  labels:
+    name: demo
+spec:
+  containers:
+  - name: main
+    image: busybox
+    args:
+      - "tail"
+      - "-f"
+      - "/dev/null"
+    env:
+    - name: DEMO VAR
+# sintaxis para coger una variable de entorno a partir de un config map
+      valueFrom:
+        configMapKeyRef:
+          key: userInd
+          name: democm

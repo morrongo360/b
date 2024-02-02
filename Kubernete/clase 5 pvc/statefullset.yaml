@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: deployment
+spec:
+  selector:
+    matchLabels:
+      app: demo
+
+#es una plantilla PVC 
+  volumeClaimTemplates:   #ste parametro no existe en un deployment
+    - metadata:
+        name: demopvc 
+      spec:
+        storageCLassName: managed
+        resources:
+          requests:
+            storage: 500Mi
+        accessModes:
+          - ReadWriteOnce
+
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec: 
+      containers:
+      - name: main
+        image: lemoncodersbc/go-hello-world
+        ports:
+        - containerPort: 80
+        volumeMounts: #ruta 
+        - mountPath: /data 
+          name: demopvc   # monta el volumen aqui

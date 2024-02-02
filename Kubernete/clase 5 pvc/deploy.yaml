@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      volumes:
+      - name: external
+        persistentVolumeClaim:
+          claimName: demopvc2  #ponemos el volumen que queramos
+      containers:
+      - name: main
+        image: lemoncodersbc/go-hello-world
+        ports:
+        - containerPort: 80
+        volumeMounts: #ruta 
+        - mountPath: /data 
+          name: external

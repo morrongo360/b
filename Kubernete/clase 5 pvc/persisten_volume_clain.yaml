@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: demopvc
+spec:
+# Hace que coja el pv con la misma etiquete y asi enlaza la pvc con pv
+# SI no hay storage ni coincide en memoria te crea un volumen con esas caracteristicas.
+  storageClassName: slowdisk  #es el   nombre que le damos para enlazar con pv
+  resources:
+    requests:
+      storage: 500Mi
+  accessModes:
+    - ReadWriteOnce

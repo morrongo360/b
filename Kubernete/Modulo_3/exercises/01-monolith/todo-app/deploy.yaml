@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app01
+spec:
+  selector:
+    matchLabels:
+      app: todo-app01
+  template:
+    metadata:
+      labels:
+        app: todo-app01
+    spec:
+      containers:
+      - name: todo-app01
+        image: jalexro/todo-app1
+        ports:
+        - containerPort: 3000
+        envFrom:
+          - configMapRef:
+              name: cm-todo-app01
+status: {}    
+        

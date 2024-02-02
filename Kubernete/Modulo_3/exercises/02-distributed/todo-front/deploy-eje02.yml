@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: todo-from
+  name: todo-from
+spec:
+  selector:
+    matchLabels:
+      app: todo-from
+  template:
+    metadata:
+      labels:
+        app: todo-from
+    spec:
+      containers:
+      - name: todo-from
+        image: jalexro/todo-api-eje02 
+        ports:
+        - containerPort: 80
+status: {}

@@ -1,0 +1,36 @@
+# environments
+.env
+
+# dependencies
+node_modules/
+
+# build
+wwwroot
+dist/
+
+# vs code
+.vscode
+.DS_Store
+
+# exercise solution
+exercise-solution/
+.DS_Store
+
+# code Jenkins demos
+app/
+
+# Access Keys
+*.pem
+*.pub
+
+# CDK8s demos
+*/08-ckd8s/00-hello-world-code/
+
+# Private view
+.aws/
+lab/
+private.readme.md
+04-cloud/00-aks/03-virtual-kubelet/auth.json
+
+# Vagrant 
+.vagrant
